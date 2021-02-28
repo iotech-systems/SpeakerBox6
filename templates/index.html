@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <link type="text/css" rel="stylesheet" href="/static/css/app.css"/>
+   <link type="text/css" rel="stylesheet" href="/static/css/tags.css"/>
+   <link type="text/css" rel="stylesheet" href="/static/css/inputs.css"/>
+   <script src="/static/js/html.js"></script>
+   <script src="/static/js/jq.js"></script>
+   <script src="/static/js/sc_state_mon.js"></script>
+   <script src="/static/js/app.js"></script>
+   <title>SoundBox6</title>
+</head>
+<body>
+   <div class="page-head">
+   </div>
+   <div class="page-body">
+      <div class="order-call-entry">
+         <div class="call-history">
+         </div>
+         <div class="input-box">
+            <input type="text" id="txtCallNumber" maxlength="2" pattern="[0-9]{2}" />
+            <input type="button" id="btnCallNumber" value="Call" />      
+         </div>
+         <div class="sound-card-controls">
+            <div class="sc-tabs">
+               <div class="sc-tab" id="SB6_P0">
+                  <div class="sc-tab-hdr" scname="SB6_P0">Zone 0
+                     <scn>(SB6_P0)</scn></div>
+                  <div class="usr-lbl"></div>
+               </div>
+               <div class="sc-tab" id="SB6_P1">
+                  <div class="sc-tab-hdr" scname="SB6_P1">Zone 1
+                     <scn>(SB6_P1)</scn></div>
+                  <div class="usr-lbl"></div>
+               </div>
+               <div class="sc-tab" id="SB6_P2">
+                  <div class="sc-tab-hdr" scname="SB6_P2">Zone 2
+                     <scn>(SB6_P2)</scn></div>
+                  <div class="usr-lbl"></div>
+               </div>
+               <div class="sc-tab" id="SB6_P3">
+                  <div class="sc-tab-hdr" scname="SB6_P3">Zone 3
+                     <scn>(SB6_P3)</scn></div>
+                  <div class="usr-lbl"></div>
+               </div>
+               <div class="sc-tab" id="SB6_P4">
+                  <div class="sc-tab-hdr" scname="SB6_P4">Zone 4
+                     <scn>(SB6_P4)</scn></div>
+                  <div class="usr-lbl"></div>
+               </div>
+               <div class="sc-tab" id="SB6_P5">
+                  <div class="sc-tab-hdr" scname="SB6_P5">Zone 5
+                     <scn>(SB6_P5)</scn></div>
+                  <div class="usr-lbl"></div>
+               </div>
+            </div>
+            <!-- sound card details -->
+            <div id="soundCardInfo" class="sc-details">
+            </div>
+         </div>
+      </div>
+      <div class="">
+      </div>
+   </div>
+   <!-- footer -->
+   <div class="page-footer">
+   </div>
+</body>
+</html>

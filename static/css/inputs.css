@@ -1,0 +1,36 @@
+
+#txtCallNumber {
+   width: 10vh;
+   font-size: 6.4vh;
+   padding: 0.2vh;
+   vertical-align: middle;
+}
+
+#btnCallNumber {
+   width: 7.6vh;
+   height: 7.6vh;
+   vertical-align: middle;
+}
+
+#btnCallNumber:hover {
+   cursor: pointer;
+}
+
+#btnCloseDetails {
+   height: 4vh;
+   margin-left: 2vw;
+   vertical-align: middle;
+}
+
+#btnCloseDetails:hover {
+   cursor: pointer;
+}
+
+.rng-pick {
+   border: 1px dotted green;
+}
+
+.sc-controls {
+   margin-left: 1vw;
+   font-size: 2vh;
+}

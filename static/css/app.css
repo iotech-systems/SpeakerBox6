@@ -1,0 +1,87 @@
+
+div.page-head {
+   width: 90vw;
+   height: 8vh;
+   line-height: 8vh;
+   margin: 2vh auto;
+   border: 2px solid #636269;
+   border-radius: 2vh;
+   /* background logo */
+   background-image: url(/static/imgs/speakerbox6.png);
+   background-size: contain;
+   background-position: left center;
+   background-repeat: no-repeat;
+}
+
+div.page-body {
+   width: 90vw;
+   height: 12vh;
+   line-height: 12vh;
+   margin: 2vh auto;
+   border: 2px solid #636269;
+   border-radius: 2vh;
+}
+
+div.order-call-entry {
+   text-align: right;
+   padding-right: 2vh;
+}
+
+div.sound-card-controls {
+   margin-top: 2vh;
+}
+
+div.sc-tab {
+   display: inline-block;
+   width: 12vw;
+   height: auto;
+   padding-right: 1vh;
+   font-size: 2.4vh;
+   border: 1px solid rgb(82, 82, 99);
+   border-radius: 8px;
+   vertical-align: top;
+}
+
+div.sc-tab:hover {
+   cursor: pointer;
+   background-color: #e9edf7;
+}
+
+div.sc-tab :nth-child(1) {
+   height: 4vh;
+   line-height: 4vh;
+}
+
+div.sc-tab :nth-child(2) {
+   height: 2vh;
+   line-height: 2vh;
+   font-size: 1.8vh;
+   padding-bottom: 1vh;
+}
+
+.tab-bg-color {
+   background-color: #a5c5f0fd;
+}
+
+.sound-card-details {
+   width: 80%;
+   margin: auto;
+}
+
+.sound-card-details div {
+   height: 8vh;
+   line-height: 8vh;
+   font-size: 2vh;
+   margin: 1vh 0;
+   padding-right: 2vh;
+   border: 1px dotted grey;
+   border-radius: 2vh;
+}
+
+.snd-card-state {
+   text-align: center;
+   min-height: 8vh !important;
+   line-height: 2.2vh !important;
+   font-size: 1.8vh !important;
+   padding: 1vh;
+}

@@ -1,0 +1,19 @@
+
+scn {
+   display: inline-block;
+   font-size: 1.6vh;
+   font-weight: bold;
+   margin-left: 4px;
+}
+
+s0 {
+   display: inline-block;
+   font-size: 1vh;
+   font-weight: bold;
+   margin-left: 4px;
+}
+
+ctrl {
+   display: inline-block;
+   margin-left: 2vw;
+}
