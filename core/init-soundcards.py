@@ -4,6 +4,7 @@ import os, sys
 import subprocess
 import configparser
 
+
 INI_FILE = "soundsys.ini"
 CONF: configparser.ConfigParser
 HUB: list
