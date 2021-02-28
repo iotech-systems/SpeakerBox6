@@ -77,7 +77,7 @@ div.sc-tab :nth-child(2) {
 
 .sound-card-details {
    width: 80%;
-   margin: auto;
+   margin: 4vh auto 1vh auto;
 }
 
 .sound-card-details div {
