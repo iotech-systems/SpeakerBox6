@@ -10,13 +10,6 @@ import core.sb6utils as sb6utils
 import core.defs as defs
 
 
-SC_NAMES = ["SB6_P0", "SB6_P1", "SB6_P2", "SB6_P3", "SB6_P4", "SB6_P5"]
-DATA_FLD = "static/data"
-MUSIC_ROOT = "mp3s/music"
-SC_CONFS = f"{DATA_FLD}/cards-config.json"
-MAX_PIDS = 32768
-
-
 class SB6Server(object):
 
    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -45,7 +38,7 @@ class SB6Server(object):
       try:
          setproctitle.setproctitle(f"{card_id}_ply_fld")
          utils = sb6utils.sb6Utils()
-         path = f"{MUSIC_ROOT}/{fld}"
+         path = f"{defs.MUSIC_ROOT}/{fld}"
          # -- do ---
          # mp3s in the folder
          mp3s = os.listdir(path)
@@ -123,7 +116,7 @@ class SB6Server(object):
    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
    def start_order_call_procs(self, fpath):
       arr = []
-      with open(SC_CONFS, "r") as f:
+      with open(defs.SC_CONFS, "r") as f:
          buff = f.read()
       jobj = json.loads(buff)
       # - - - -
@@ -152,7 +145,6 @@ class SB6Server(object):
 
    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
    def set_card_volume(self, card_name, level: str):
-      level = level.replace("%", "")
       cmd = f"amixer -c {card_name} sset Speaker {level}%"
       buff = sp.check_output(cmd, shell=True)
       return buff
@@ -180,11 +172,9 @@ class SB6Server(object):
    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
    def update_cards_config(self, jsonBuff):
       try:
-         # save to file
-         fpath = "static/data/cards-config.json"
-         with open(fpath, "w") as f:
-            f.write(jsonBuff)
          # - - - -
+         utils = sb6utils.sb6Utils()
+         utils.save_snd_cards_conf(jsonBuff)
          self.update_cards_volume(jsonBuff)
          # - - - -
          return "OK"
@@ -197,7 +187,8 @@ class SB6Server(object):
       obj = json.loads(jsonBuff)
       for card_name in obj:
          vol = obj[card_name]["volume"]
-         self.set_card_volume(card_name, vol)
+         buff = self.set_card_volume(card_name, vol)
+         print(buff)
 
    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
    @staticmethod

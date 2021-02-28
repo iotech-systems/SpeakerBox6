@@ -100,3 +100,17 @@ class sb6Utils(object):
          proc = psutil.Process(pid)
          state[f"{pidPrefix}_is_running"] = proc.is_running()
          state[f"{pidName}_found"] = True
+
+   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   def get_snd_cards_conf(self):
+      fpath = f"{defs.DATA_FLD}/cards-config.json"
+      with open(fpath, "r") as f:
+         buff = f.read()
+      return buff
+
+   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   def save_snd_cards_conf(self, buff):
+      fpath = f"{defs.DATA_FLD}/cards-config.json"
+      with open(fpath, "w") as f:
+         f.write(buff)
+      return buff

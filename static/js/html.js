@@ -7,7 +7,7 @@ var html = {
          rid = `vid_${cardid}`,
          inc = `inc_${cardid}`,
          lbl = cardConf.userLbl,
-         vol = cardConf.volume.replace("%", ""),
+         vol = cardConf.volume,
          chc = (cardConf.useInOrderCall == 1) ? "checked" : "",
          phold = "";
       /* - - */
