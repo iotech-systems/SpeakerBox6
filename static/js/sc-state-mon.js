@@ -21,6 +21,7 @@ const sndCardMonitor = {
       $.get(callurl, (res) => {
             try {
                $(`#${sndCardMonitor.targetDivID}`).html(res);
+               sndCardState.update(res);
             } catch(e) {
                console.log(e);
             }

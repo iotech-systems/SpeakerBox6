@@ -31,6 +31,10 @@ div.sound-card-controls {
    margin-top: 2vh;
 }
 
+div.sc-tabs {
+   text-align: center;
+}
+
 div.sc-tab {
    display: inline-block;
    width: 12vw;

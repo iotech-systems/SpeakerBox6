@@ -48,6 +48,7 @@ class SB6Server(object):
          sb6sPID = os.getpid()
          state = utils.new_state_object("FolderPlayer",
             card_id, "sb6s", sb6sPID)
+         state["playingFolder"] = fld
          # - - - -
          while True:
             rid = random.randrange(0, len(mp3s), 1)

@@ -7,6 +7,11 @@
 const FLD_PLAY = "Play Folder";
 const FLD_STOP = "Stop Play";
 
+const consts = {
+   FLD_PLAY: "Play Folder",
+   FLD_STOP: "Stop Play"
+};
+
 
 const app = {
 
