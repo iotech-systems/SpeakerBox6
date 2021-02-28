@@ -24,21 +24,13 @@ const app = {
    init() {
       /* - - */
       $(".sc-tab").on("click", app.tabSoundCardClick);
-      $("#btnCallNumber").on("click", app.callOrderNumber);
+      $("#btnCallNumber").on("click", orderCaller.callOrderNumber);
       /* - - */
       app.loadCardsConf();
       app.loadMusicFolders();
+      orderCaller.init("txtCallNumber", "callHistBox");
       /* - - */
       sndCardMonitor.run();
-   },
-
-   /* http://192.168.1.160:5000/api/all/play/num/55 */
-   callOrderNumber() {
-      let num = $("#txtCallNumber").val(),
-         callNumUrl = `/api/all/play/num/${num}`;
-      fetch(callNumUrl).then(res => {
-            console.log(res);
-         });
    },
 
    updateZoneTabs() {

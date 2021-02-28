@@ -15,16 +15,24 @@ div.page-head {
 
 div.page-body {
    width: 90vw;
-   height: 12vh;
-   line-height: 12vh;
+   height: auto;
    margin: 2vh auto;
    border: 2px solid #636269;
+   border-radius: 2vh;
+   padding-bottom: 2vh;
+}
+
+.page-body-top {
+   width: 98%;
+   height: 12vh;
+   line-height: 12vh;
+   margin: 2vh auto 0 auto;
+   border: 1px solid #dcdcdc;
    border-radius: 2vh;
 }
 
 div.order-call-entry {
    text-align: right;
-   padding-right: 2vh;
 }
 
 div.sound-card-controls {
@@ -89,3 +97,4 @@ div.sc-tab :nth-child(2) {
    font-size: 1.8vh !important;
    padding: 1vh;
 }
+

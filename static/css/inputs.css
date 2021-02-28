@@ -9,6 +9,7 @@
 #btnCallNumber {
    width: 7.6vh;
    height: 7.6vh;
+   margin-right: 1vw;
    vertical-align: middle;
 }
 
@@ -33,4 +34,42 @@
 .sc-controls {
    margin-left: 1vw;
    font-size: 2vh;
+}
+
+.input-box {
+   display: inline-block;
+   width: 16%;
+}
+
+.call-history {
+   display: inline-block;
+   height: 8vh;
+   width: 82%;
+   line-height: 8vh;
+   vertical-align: middle;
+}
+
+.call-num-frame {
+   display: inline-block;
+   height: inherit!;
+   margin: 0 4px;
+   pad: 4px;
+   border: 1px solid #22862a;
+   border-radius: 1vh;
+}
+
+.call-num-box {
+   height: 6vh;
+   line-height: 6vh;
+   font-size: 4.2vh;
+   text-align: center;
+   border-width: 0;
+}
+
+.call-num-dts {
+   height: 2vh;
+   line-height: 2vh;
+   font-size: 1.6vh;
+   padding: 4px;
+   border-width: 0;
 }

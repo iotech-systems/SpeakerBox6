@@ -43,6 +43,11 @@ var html = {
       /* - - */
       $("#selMusicDirs").html(`<option value="NoFolder">NoFolder</option>`);
       $(app.musicFolders).each(oneach)
+   },
+
+   callNumFrame(num, dts) {
+      return `<div class="call-num-frame"><div class="call-num-box">${num}</div>` + 
+         `<div class="call-num-dts">${dts}</div></div>`;
    }
 
 };

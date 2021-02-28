@@ -7,8 +7,9 @@
    <link type="text/css" rel="stylesheet" href="/static/css/inputs.css"/>
    <script src="/static/js/html.js"></script>
    <script src="/static/js/jq.js"></script>
-   <script src="/static/js/sc-state-mon.js"></script>
    <script src="/static/js/snd-card-state.js"></script>
+   <script src="/static/js/snd-card-state-mon.js"></script>
+   <script src="/static/js/order-caller.js"></script>
    <script src="/static/js/app.js"></script>
    <title>SpeakerBox6</title>
 </head>
@@ -17,11 +18,13 @@
    </div>
    <div class="page-body">
       <div class="order-call-entry">
-         <div class="call-history">
-         </div>
-         <div class="input-box">
+         <div class="page-body-top">
+            <div id="callHistBox" class="call-history">
+            </div>
+            <div class="input-box">
             <input type="text" id="txtCallNumber" maxlength="2" pattern="[0-9]{2}" />
             <input type="button" id="btnCallNumber" value="Call" />      
+            </div>
          </div>
          <div class="sound-card-controls">
             <div class="sc-tabs">
