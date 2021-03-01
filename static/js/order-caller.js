@@ -22,20 +22,26 @@ const orderCaller = {
    },
 
    sendToSpeakerBox() {
-
    },
 
    /* http://192.168.1.160:5000/api/all/play/num/55 */
    callOrderNumber() {
+      /* - - */
       orderCaller.disableInput();
       let num = $(orderCaller.selNumBoxID).val(),
          callNumUrl = `/api/all/play/num/${num}`;
+      /* - - */
+      const rgx = /[1-9]{1,2}/g;
+      if (!rgx.test(num)) {
+         orderCaller.enableInput();
+         return;
+      }
       /* - - */
       fetch(callNumUrl).then(res => {
             /* - - */
             let num = $(orderCaller.selNumBoxID).val(),
                /* greb first time string */
-               time = new Date().toTimeString().split(" ")[0],
+               time = utils.timeNowStr(),
                numFrame = html.callNumFrame(num, time);
             if (orderCaller.callBuffArr.length > 13)
                orderCaller.callBuffArr.shift();

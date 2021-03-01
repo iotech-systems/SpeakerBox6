@@ -226,11 +226,18 @@ class SB6Server(object):
 
    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
    @staticmethod
-   def stop_card_test(pid: int):
+   def stop_card_test(card_id):
       try:
-         print(f"stop_card_test ~ pid: {pid}")
+         print(f"stop_card_test ~ card_id: {card_id}")
          utils = sb6utils.sb6Utils()
-         utils.kill_pid(pid)
+         state = utils.get_state_object(card_id)
+         # get testPID from state object
+         if "testPID" in state:
+            test_pid = state["testPID"]
+            utils.kill_pid(test_pid)
+         else:
+            # return "testPID not found in state object"
+            pass
       except Exception as ex:
          print(ex)
 

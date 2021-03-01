@@ -4,12 +4,13 @@
    date: 25/02/2021   
 */
 
-const FLD_PLAY = "Play Folder";
-const FLD_STOP = "Stop Play";
+/* const FLD_PLAY = "Play Folder";
+const FLD_STOP = "Stop Play"; */
 
 const consts = {
    FLD_PLAY: "Play Folder",
-   FLD_STOP: "Stop Play"
+   FLD_STOP: "Stop Play",
+   NOT_JSON_STR: "NOT_JSON_STR"
 };
 
 
@@ -23,7 +24,7 @@ const app = {
 
    init() {
       /* - - */
-      $(".sc-tab").on("click", app.tabSoundCardClick);
+      $(".sc-tab").on("click", app.onSoundCardTabClick);
       $("#btnCallNumber").on("click", orderCaller.callOrderNumber);
       /* - - */
       app.loadCardsConf();
@@ -31,6 +32,9 @@ const app = {
       orderCaller.init("txtCallNumber", "callHistBox");
       /* - - */
       sndCardMonitor.run();
+      setInterval(() => {
+            app.updateTabStatus();
+         }, 2000);
    },
 
    updateZoneTabs() {
@@ -48,7 +52,7 @@ const app = {
       $(".sc-tab").each(oneach);
    },
 
-   tabSoundCardClick() {
+   onSoundCardTabClick() {
       /* check if sound card test is running */
       if (app.isCardTestRunning())
          return;
@@ -69,7 +73,7 @@ const app = {
       /* update music select */
       html.loadMusicFolders();
       /* add events */
-      $("#btnPlayTest").off().on("click", app.onPlayCardTest);
+      $("#btnPlayTest").off().on("click", app.onPlayStopCardTest);
       $("#btnSaveInfo").off().on("click", app.saveSoundCardInfo);
       $("#btnCloseDetails").off().on("click", app.closeSoundCardDetails);
       $("#btnPlayFolder").off().on("click", app.onPlayStopMusicFolderClick);
@@ -79,7 +83,7 @@ const app = {
       /* - - */
    },
 
-   onPlayCardTest() {
+   onPlayStopCardTest() {
       /* - - */
       let __btn__ = this,
          val = $(__btn__).val(),
@@ -92,8 +96,7 @@ const app = {
             break;
          case "Stop Test":
             $(__btn__).val("Play Test");
-            let pid = $(__btn__).attr("testpid");
-            app.killTestProcess(__btn__, pid);
+            app.stopSoundCardTest(__btn__, scid);
             break;
          default:
             break;
@@ -112,15 +115,15 @@ const app = {
       $.get(testUrl, ondone)
    },
 
-   killTestProcess(__btn__, pid) {
+   stopSoundCardTest(__btn__, card_id) {
       /* - - */
-      let killUrl = `/api/kill/test/${pid}`;
+      let callUrl = `/api/${card_id}/stop/test`;
       let ondone = function(res) {
             if (res == "OK")
                $(__btn__).attr("testpid", "");
          };
       /* kill test */
-      $.get(killUrl, ondone)
+      $.get(callUrl, ondone)
    },
 
    /* { "volume": "50%",
@@ -199,12 +202,13 @@ const app = {
          card_id = $(this).attr("scid"),
          fld = $("#selMusicDirs").val();
       /* - - */
-      if ($(this).val() == FLD_PLAY) {
+      if ($(this).val() == consts.FLD_PLAY) {
          let callurl = `/api/${card_id}/play/folder/${fld}`;
          $.get(callurl, (res) => {
                if (res.startsWith("PID:")) {
                   /* proc started */
-                  $(__btn__).val(FLD_STOP);   
+                  $(__btn__).val(consts.FLD_STOP);
+                  $(__btn__).removeClass("un-busy").addClass("busy");   
                   $(__btn__).attr("pid", res.replace("PID:", ""));
                   $("#selMusicDirs").attr("disabled", "1");
                   sndCardMonitor.sndCardID = card_id; 
@@ -212,8 +216,9 @@ const app = {
                   alert(res.replace("ERROR.", ""));
                }
             });
-      } else if ($(this).val() == FLD_STOP) {
-         $(__btn__).val(FLD_PLAY);
+      } else if ($(this).val() == consts.FLD_STOP) {
+         $(__btn__).val(consts.FLD_PLAY);
+         $(__btn__).removeClass("busy").addClass("un-busy");
          let callurl = `/api/${card_id}/stop/folder`;
          $.get(callurl, (res) => {
                if (res == "OK")
@@ -234,10 +239,26 @@ const app = {
                $("#btnPlayFolder").val(FLD_STOP);   
             }
          });
+   },
+
+   /* this will need more work as the logic to inluced playing 
+      folders or song lists */
+   updateTabStatus() {
+      /* - - */
+      for (let card_id in app.cardsConfig) {
+         let obj = app.cardsConfig[card_id],
+            sel = `#${card_id} .snd-crd-status`;
+         if (obj.useInOrderCall == 0) 
+            continue;
+         let msg = `OrderCalling; vol: ${obj.volume}%;`;
+         $(sel).html(msg);
+      }
    }
 
 };
 
+
+/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */ 
 /* on doc loaded */
 window.addEventListener("DOMContentLoaded", (e) => {
    app.init();

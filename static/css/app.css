@@ -24,8 +24,8 @@ div.page-body {
 
 .page-body-top {
    width: 98%;
-   height: 12vh;
-   line-height: 12vh;
+   height: 14vh;
+   line-height: 14vh;
    margin: 2vh auto 0 auto;
    border: 1px solid #dcdcdc;
    border-radius: 2vh;
@@ -36,7 +36,7 @@ div.order-call-entry {
 }
 
 div.sound-card-controls {
-   margin-top: 2vh;
+   margin-top: 6vh;
 }
 
 div.sc-tabs {
@@ -45,11 +45,11 @@ div.sc-tabs {
 
 div.sc-tab {
    display: inline-block;
-   width: 12vw;
+   width: 12.8vw;
    height: auto;
-   padding-right: 1vh;
+   margin: auto 8px;
    font-size: 2.4vh;
-   border: 1px solid rgb(82, 82, 99);
+   border: 1px solid #525263;
    border-radius: 8px;
    vertical-align: top;
 }
@@ -72,7 +72,7 @@ div.sc-tab :nth-child(2) {
 }
 
 .tab-bg-color {
-   background-color: #a5c5f0fd;
+   background-color: #dbe5f1fd;
 }
 
 .sound-card-details {
@@ -86,15 +86,16 @@ div.sc-tab :nth-child(2) {
    font-size: 2vh;
    margin: 1vh 0;
    padding-right: 2vh;
-   border: 1px dotted grey;
+   border: 1px solid #58595e;
    border-radius: 2vh;
+   background-color: #f3f4f5;
 }
 
 .snd-card-state {
    text-align: center;
-   min-height: 8vh !important;
-   line-height: 2.2vh !important;
-   font-size: 1.8vh !important;
+   min-height: 10vh !important;
+   line-height: 2.5vh !important;
+   font-size: 1.6vh !important;
    padding: 1vh;
 }
 

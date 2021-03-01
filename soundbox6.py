@@ -38,7 +38,8 @@ def stop_folder(card_id):
 # reads & checks state file in data folder
 @app.route("/api/<card_id>/get-state")
 def get_snd_crd_state(card_id):
-   return sb6.SB6Server.get_snd_crd_state(card_id)
+   res_buff = sb6.SB6Server.get_snd_crd_state(card_id)
+   return flask.Response(response=res_buff, content_type="text/plain")
 
 
 @app.route("/api/<card_id>/play/test")
@@ -51,10 +52,10 @@ def run_card_test(card_id):
       print(ex)
 
 
-@app.route("/api/kill/test/<pid>")
-def stop_card_test(pid: int):
+@app.route("/api/<card_id>/stop/test")
+def stop_card_test(card_id):
    try:
-      sb6.SB6Server.stop_card_test(pid)
+      sb6.SB6Server.stop_card_test(card_id)
       return "OK"
    except Exception as ex:
       print(ex)

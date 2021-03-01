@@ -54,8 +54,9 @@
    height: inherit!;
    margin: 0 4px;
    pad: 4px;
-   border: 1px solid #22862a;
+   border: 2px solid #435e88;
    border-radius: 1vh;
+   background-color: #f2f5fa;
 }
 
 .call-num-box {
@@ -73,3 +74,23 @@
    padding: 4px;
    border-width: 0;
 }
+
+.busy {
+   color: red;
+}
+
+.un-busy {
+   color: green;
+}
+
+.snd-crd-status {
+   width: 96%;
+   height: 2.2vh;
+   line-height: 2.2vh;
+   font-size: 1.4vh;
+   margin: 1px auto 4px auto;
+   border: 1px solid #9d9da7;
+   border-radius: 4px;
+   background-color: whitesmoke !important;
+}
+
