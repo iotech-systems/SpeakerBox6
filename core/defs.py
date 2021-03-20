@@ -5,3 +5,6 @@ RUNTIME_FLD = "static/runtime"
 MUSIC_ROOT = "mp3s/music"
 SC_CONFS = f"{DATA_FLD}/cards-config.json"
 MAX_PIDS = 32768
+
+PRC_NAME_SB6_SERVER = "sb6server"
+PRC_NAME_SB6_MONITOR = "sb6monitor"

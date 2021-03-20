@@ -2,7 +2,7 @@
 import time
 import os, sys, io, re
 import json, random, psutil
-import datetime as dt
+# import datetime as dt
 import subprocess as sp
 import multiprocessing as mp
 import setproctitle
@@ -103,6 +103,7 @@ class SB6Server(object):
       try:
          mp3_path = f"mp3s/nums/num{num}.mp3"
          procs = self.start_order_call_procs(mp3_path)
+         print(procs)
          # wait on mp3 procs
          for proc in procs:
             if not proc.is_alive():
@@ -116,7 +117,7 @@ class SB6Server(object):
 
    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
    def start_order_call_procs(self, fpath):
-      arr = []
+      proc_arr = []
       with open(defs.SC_CONFS, "r") as f:
          buff = f.read()
       jobj = json.loads(buff)
@@ -125,9 +126,12 @@ class SB6Server(object):
          if int(jobj[card_id]["useInOrderCall"]) == 0:
             continue
          mp3proc = mp.Process(target=SB6Server.play_mp3_proc, args=(card_id, fpath))
-         arr.append(mp3proc)
+         proc_arr.append(mp3proc)
+      # - - -
+      for mp3proc in proc_arr:
          mp3proc.start()
-      return arr
+      # - - -
+      return proc_arr
 
    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
    def start_folder_player(self, card_id, fld):
