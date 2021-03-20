@@ -100,7 +100,8 @@ def start_app_server():
    try:
       # start monitor
       print("\n - - - starting app monitor - - -\n")
-      p = mp.Process(target=sb6m.sb6monitor.start, args=("speakerbox6",))
+      args = (defs.PRC_NAME_SB6_SERVER,)
+      p = mp.Process(target=sb6m.sb6monitor.start, args=args)
       p.start()
       print(f"\tmonitor pid: {p.pid}")
       # start app server

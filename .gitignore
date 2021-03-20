@@ -127,3 +127,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+static/runtime/SB6_P2_state.json
